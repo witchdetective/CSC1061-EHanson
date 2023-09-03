@@ -36,7 +36,7 @@ public class CommissionEmployee extends Employee { // Begin child class.
 
     @Override
     public String toString() {
-        return getFirstName() + ", " + getLastName() + ", " + getSocial() + ", " + getPaymentAmount();
+        return getFirstName() + "\n" + getLastName() + "\n" + getPaymentAmount();
     }
 
 }

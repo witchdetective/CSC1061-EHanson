@@ -41,7 +41,7 @@ class Employee { // Begin parent class.
     }
     // To be overridden in child classes.
     public String toString() {
-        return firstName + ", " + lastName + ", " + social + ", ";
+        return firstName + "\n" + lastName + "\n";
     }
 
     public double getPaymentAmount() {

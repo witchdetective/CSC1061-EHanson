@@ -20,8 +20,6 @@ public class AccountsPayable { // Begin driver class.
                 System.out.println("What is your weekly salary?");
                 double weeklySalary = s.nextDouble();
                 ((SalariedEmployee) payableEmployees[i]).setWeeklySalary(weeklySalary);
-
-                double paymentAmount = weeklySalary;
             }
             if (typeOfEmployee.equals("Commision")) {
                 System.out.println("Do you have the base plus commision?");
@@ -39,19 +37,13 @@ public class AccountsPayable { // Begin driver class.
                     int commisionRate = s.nextInt();
                     ((CommissionEmployee) payableEmployees[i]).setCommisionRate(commisionRate);
 
-                    double comPaymentAmount = ((CommissionEmployee) payableEmployees[i]).getPaymentAmount();
-
                     System.out.println("What is your base pay?");
                     double basePay = s.nextDouble();
+                    // ((BasePlusCommissionEmployee) payableEmployees[i]).setBasePay(basePay);
+
+                    basePay = basePay + (basePay * 0.1); // Increases 10% to the base salary.
+
                     ((BasePlusCommissionEmployee) payableEmployees[i]).setBasePay(basePay);
-
-                    double basePlusComPaymentAmount = ((BasePlusCommissionEmployee) payableEmployees[i])
-                            .getPaymentAmount();
-
-                    basePlusComPaymentAmount = basePlusComPaymentAmount + (basePlusComPaymentAmount * 0.1); // Increases 10% to the base salary.
-
-                    double paymentAmount = basePlusComPaymentAmount + comPaymentAmount;
-
                 } else {
                     payableEmployees[i] = new CommissionEmployee();
                     getEmployeeInfo(payableEmployees[i], s);
@@ -63,10 +55,6 @@ public class AccountsPayable { // Begin driver class.
                     System.out.println("What is your commision rate?");
                     int commisionRate = s.nextInt();
                     ((CommissionEmployee) payableEmployees[i]).setCommisionRate(commisionRate);
-
-                    double comPaymentAmount = ((CommissionEmployee) payableEmployees[i]).getPaymentAmount();
-
-                    double paymentAmount = comPaymentAmount;
 
                 }
             }
@@ -82,18 +70,16 @@ public class AccountsPayable { // Begin driver class.
                 int hours = s.nextInt();
                 ((HourlyEmployee) payableEmployees[i]).setHours(hours);
 
-                double hourlyPaymentAmount = ((HourlyEmployee) payableEmployees[i]).getPaymentAmount();
-
-                double paymentAmount = hourlyPaymentAmount;
-            }
-
-            if (payableEmployees[i] != null) { // Makes sure the program prints information when the user mistypes.
-                print(i, payableEmployees);
-                printWithoutToString(i, payableEmployees);
             }
         }
         s.close();
 
+        for (int i = 0; i < payableEmployees.length; i++) {
+            if (payableEmployees[i] != null) {
+                print(payableEmployees[i]);
+                printWithoutToString(i, payableEmployees);
+            }
+        }
     }
 
     public static void getEmployeeInfo(Employee payableEmployees, Scanner s) {
@@ -109,13 +95,15 @@ public class AccountsPayable { // Begin driver class.
         int social = s.nextInt();
         payableEmployees.setSocial(social);
     }
+
     // Prints with toString.
-    public static void print(int i, Employee payableEmployees[]) {
-        System.out.println(payableEmployees[i].toString());
+    public static void print(Employee payableEmployees) {
+        System.out.println(payableEmployees.toString());
     }
+
     // Prints without toString.
     public static void printWithoutToString(int i, Employee payableEmployees[]) {
-        System.out.println(payableEmployees[i].getFirstName() + ", " + payableEmployees[i].getLastName() + ", "
-                + payableEmployees[i].getSocial() + ", " + payableEmployees[i].getPaymentAmount());
+        System.out.println(payableEmployees[i].getFirstName() + "\n" + payableEmployees[i].getLastName() + "\n"
+                 + payableEmployees[i].getPaymentAmount());
     }
 }
