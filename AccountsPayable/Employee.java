@@ -1,4 +1,4 @@
-class Employee { // Begin parent class.
+public class Employee { // Begin parent class.
     // Private variables.
     private String firstName;
     private String lastName;

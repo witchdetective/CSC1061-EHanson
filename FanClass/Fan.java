@@ -1,4 +1,4 @@
-class Fan { // Begin class.
+public class Fan { // Begin class.
 
     // Global constants.
     final int SLOW = 1;
@@ -10,7 +10,9 @@ class Fan { // Begin class.
     private boolean on;
     private double radius;
     private String color;
-    private static int id = 0; // The id variable is static so it can increment.
+    private int id = 0;
+
+    private static int count = 0;
 
     // Accessors and mutators.
     public void setSpeed(int speed) {
@@ -45,16 +47,17 @@ class Fan { // Begin class.
         return color;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int incrementID() {
+        id = id + count++;
+        return id;
     }
 
     // The toString() method.
     public String toString() {
         if (on == true) {
-            return "Fan: " + id + " Speed: " + speed + " Radius: " + radius + " Color: " + color + "\n The fan is on.";
+            return "ID: " + id + " Speed: " + speed + " Radius: " + radius + " Color: " + color + "\n The fan is on.";
         } else {
-            return "Fan: " + id + " Speed: " + speed + " Radius: " + radius + " Color: " + color + "\n The fan is off.";
+            return "ID: " + id + " Speed: " + speed + " Radius: " + radius + " Color: " + color + "\n The fan is off.";
         }
     }
 
@@ -64,7 +67,7 @@ class Fan { // Begin class.
         this.radius = 5.0;
         this.color = "blue";
         this.on = false;
-        setId(++id);
+        this.id = 0;
     }
 
 } // End class.
