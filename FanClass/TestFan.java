@@ -9,7 +9,6 @@ public class TestFan { // Begin test class.
         fan1.setRadius(10.0);
         fan1.setColor("yellow");
         fan1.setSwitch(true);
-        fan1.incrementID();
         System.out.println(fan1.toString());
 
         // Create second fan object.
@@ -18,7 +17,6 @@ public class TestFan { // Begin test class.
         fan2.setRadius(5.0);
         fan2.setColor("blue");
         fan2.setSwitch(false);
-        fan2.incrementID();
         System.out.println(fan2.toString());
     }
 } // End test class.

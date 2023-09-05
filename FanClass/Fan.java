@@ -47,10 +47,6 @@ public class Fan { // Begin class.
         return color;
     }
 
-    public int incrementID() {
-        id = id + count++;
-        return id;
-    }
 
     // The toString() method.
     public String toString() {
@@ -67,7 +63,7 @@ public class Fan { // Begin class.
         this.radius = 5.0;
         this.color = "blue";
         this.on = false;
-        this.id = 0;
+        this.id = id + count++;
     }
 
 } // End class.
