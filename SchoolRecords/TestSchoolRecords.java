@@ -1,10 +1,16 @@
 import java.util.ArrayList; // For Arraylists.
-
-public class TestSchoolRecords { // Testing class.
+/**
+ * This class tests the code.
+ * @author Emma
+ */
+public class TestSchoolRecords { 
+/** 
+ * This is the main method to test all classes. It create 6 people and creates an ArrayList for each.
+ * @param args
+ */
     public static void main(String[] args) {
         Database data = new Database();
         
-        // 6 people created. 2 students, 2 staff, 2 faculty.
         Student student1 = new Student();
         student1.setName("Sharon Wolf");
         student1.setAddress("123 Fake St.");
@@ -67,12 +73,10 @@ public class TestSchoolRecords { // Testing class.
         staff2.setTitle("Math Teacher");
         data.writePerson(staff2);
 
-        // An ArrayList for each person.
         ArrayList<Person> people = data.readDatabase();
 
         for (Person person : people) {
             System.out.println(person.toString());
         }
-
     }
 }

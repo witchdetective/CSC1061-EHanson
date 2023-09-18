@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database {
-    
-    static final File MY_FILE = new File("PersonDatabase.txt"); // Constant file.
+    /** This file is made a global constant to use throughout the rest of the class.
+     * @see MY_FILE
+    */
+    static final File MY_FILE = new File("PersonDatabase.txt"); 
 
-
-    public Database() { // Checks for file.
+    /** This method checks for the existence of a file. */
+    public Database() { 
         if (!MY_FILE.exists()) {
             try {
                 if (MY_FILE.createNewFile()) {
@@ -24,7 +26,10 @@ public class Database {
         }
     }
 
-    public ArrayList<Person> readDatabase() { // Reads file and returns list of each string after a comma and space.
+    /** This method reads the database file and returns a list of each string after a comma and space.
+     * @return ArrayList<Object>
+    */
+    public ArrayList<Person> readDatabase() {
         ArrayList<Person> people = new ArrayList<Person>();
 
         Scanner s = null;
@@ -34,7 +39,7 @@ public class Database {
                 String line = s.nextLine();
                 String[] tokens = line.split(", ");
 
-                // Checks for each type of person/employee.
+                /** This if statement checks for each type of person/employee. */
                 if (tokens[0].equals("Type: Student")) {
                     Student student = new Student();
                     student.setName(tokens[1]);
@@ -73,10 +78,13 @@ public class Database {
             System.out.print(e.getMessage());
             System.exit(-1);
         }
-
         return people;
     }
 
+    /**
+     * This method writes each Person object to the file.
+     * @param Person
+     */
     public void writePerson(Object Person) { // Writes to file.
 
         try {
