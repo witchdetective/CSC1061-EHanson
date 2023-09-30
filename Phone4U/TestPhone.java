@@ -1,9 +1,12 @@
-package edu.frcc.csc1061.myarraylist;
+import java.util.ArrayList; // For the ArrayList of characters.
 
 public class TestPhone {
 
-    public static void main(String args[]) {
+    public static void main(String args[]) { // Main.
 
+        /* The test phone models. Creates two of each model, 
+        uses the compare to method for each,
+        and calls the cost to repair accordingly. */ 
         // Flip models.
         FlipModel flip1 = new FlipModel();
         flipIMEI(flip1);
@@ -64,24 +67,24 @@ public class TestPhone {
 
     }
 
-    public static void flipIMEI(FlipModel myPhone) {
-        MyArrayList<Character> arr = new MyArrayList<Character>();
+    public static void flipIMEI(FlipModel myPhone) { //IMEI printer for flip phone.
+        ArrayList<Character> arr = new ArrayList<Character>();
         arr = myPhone.getIMEI();
         for (int i = 0; i < arr.size(); i++) {
             System.out.print(arr.get(i));
         }
     }
 
-    public static void foldIMEI(FoldModel myPhone) {
-        MyArrayList<Character> arr = new MyArrayList<Character>();
+    public static void foldIMEI(FoldModel myPhone) { //IMEI printer for fold phone.
+        ArrayList<Character> arr = new ArrayList<Character>();
         arr = myPhone.getIMEI();
         for (int i = 0; i < arr.size(); i++) {
             System.out.print(arr.get(i));
         }
     }
 
-    public static void barIMEI(BarModel myPhone) {
-        MyArrayList<Character> arr = new MyArrayList<Character>();
+    public static void barIMEI(BarModel myPhone) { //IMEI printer for bar phone.
+        ArrayList<Character> arr = new ArrayList<Character>();
         arr = myPhone.getIMEI();
         for (int i = 0; i < arr.size(); i++) {
             System.out.print(arr.get(i));

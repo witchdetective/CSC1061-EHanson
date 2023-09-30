@@ -1,14 +1,15 @@
-package edu.frcc.csc1061.myarraylist;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
 public class FoldModel implements Comparable<FoldModel> {
+    // Private variables.
     private String name;
     private int processor;
     private int cache;
     private int storage;
 
+    // Sets defaults.
     public FoldModel() {
         this.name = "SpeedRacer ";
         this.processor = 800;
@@ -16,6 +17,7 @@ public class FoldModel implements Comparable<FoldModel> {
         this.storage = 64;
     }
 
+    // Getters and setters.
     public String getName() {
         return this.name;
     }
@@ -48,6 +50,7 @@ public class FoldModel implements Comparable<FoldModel> {
         this.storage = storage;
     }
 
+    // toString method.
     @Override
     public String toString() {
         return "FoldModel: " + name + " " + processor + " processor, " + cache + "MB cache, " + storage + "GB storage";
@@ -80,9 +83,9 @@ public class FoldModel implements Comparable<FoldModel> {
         return -1;
     }
 
-    public MyArrayList<Character> getIMEI() {
+    public ArrayList<Character> getIMEI() {
 
-        MyArrayList<Character> arr = new MyArrayList<Character>();
+        ArrayList<Character> arr = new ArrayList<Character>();
 
         System.out.print("\nIMEI: ");
         for (int i = 0; i < 13; i++) {

@@ -1,14 +1,15 @@
-package edu.frcc.csc1061.myarraylist;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
-public class FlipModel implements Comparable<FlipModel>, Repairable {
+public class FlipModel implements Comparable<FlipModel>, Repairable { // Uses Repairable interface.
+    // Private variables.
     private String name;
     private int processor;
     private int cache;
     private int storage;
 
+    // Sets defaults.
     public FlipModel() {
         this.name = "HorseRacer ";
         this.processor = 300;
@@ -16,6 +17,7 @@ public class FlipModel implements Comparable<FlipModel>, Repairable {
         this.storage = 16;
     }
 
+    // How to and cost to repair fold model.
     @Override
     public String howToRepair() {
         return "To repair a flip model, replace the batteries, unscrew the screen, fix the circuit board and flip hinges.";
@@ -26,6 +28,7 @@ public class FlipModel implements Comparable<FlipModel>, Repairable {
         return 45.30;
     }
 
+    // Getters and setters.
     public String getName() {
         return this.name;
     }
@@ -58,6 +61,7 @@ public class FlipModel implements Comparable<FlipModel>, Repairable {
         this.storage = storage;
     }
 
+    // toString method.
     @Override
     public String toString() {
         return "FlipModel: " + name + " " + processor + " processor, " + cache + "MB cache, " + storage + "GB storage";
@@ -90,9 +94,9 @@ public class FlipModel implements Comparable<FlipModel>, Repairable {
         return -1;
     }
 
-    public MyArrayList<Character> getIMEI() {
+    public ArrayList<Character> getIMEI() {
 
-        MyArrayList<Character> arr = new MyArrayList<Character>();
+        ArrayList<Character> arr = new ArrayList<Character>();
 
         System.out.print("\nIMEI: ");
         for (int i = 0; i < 13; i++) {
