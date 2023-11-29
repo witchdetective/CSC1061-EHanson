@@ -1,6 +1,5 @@
 package edu.frcc.csc1061j.MyAVLTree;
 
-import edu.frcc.csc1061j.MyAVLTree.MyAVLTree;
 import edu.frcc.csc1061j.MyAVLTree.MyAVLTree.Node;
 
 public class MyAVLTreeTest {
