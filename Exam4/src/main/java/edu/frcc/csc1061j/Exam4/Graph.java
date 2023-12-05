@@ -3,6 +3,7 @@ package edu.frcc.csc1061j.Exam4;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -139,10 +140,6 @@ public class Graph<E> {
 	 ** vertices in the pre-order depth-first traversal.
 	 */
 
-	public Vertex getVertex(int i) {
-		return vertices.get(i);
-	}
-
 	public List<Vertex> dfs(Vertex root) {
 		List<Vertex> visited = new ArrayList<Vertex>();
 
@@ -169,7 +166,7 @@ public class Graph<E> {
 	 ** of all the vertices in the breadth-first traversal.
 	 */
 	public List<E> bfs() {
-		Vertex root = getVertex(0); // Set root.
+		Vertex root = findVertex((E) (Integer) 0); // Set root.
 		List<Vertex> visited = new ArrayList<Vertex>();
 
 		Deque<Vertex> queue = new ArrayDeque<>();
@@ -195,7 +192,42 @@ public class Graph<E> {
 	 ** The spanning tree will be a new graph
 	 */
 	public Graph<E> findMinimumSpanningTree() {
+		// Empty edge list to order edges. 
+		List<Edge> orderEdges = new ArrayList<Edge>();
 
-		return null;
+		// Add edges.
+		for (Vertex v : vertices) {
+			for (Edge e : v.neighbors) {
+				orderEdges.add(e);
+			}
+		}
+
+		// Sort edges.
+		Collections.sort(orderEdges, new Comparator<Edge>() {
+			public int compare(Edge e1, Edge e2) {
+				return e1.compareTo(e2);
+			}
+		});
+
+		// Create empty vertices.
+		List<Vertex> vertices = new ArrayList<>();
+		for (Integer i = 0; i < 6; i++) {
+			vertices.add(i, new Vertex((E) i));
+		}
+
+		// Create empty MST graph to connect and return. 
+		Graph<E> mst = new Graph<>(vertices);
+
+		// Loop over ordered edges.
+		for (Edge e : orderEdges) {
+			// Does connection exist?
+			// If dfs contains dest then a connection already exists. Would be cyclical.
+			if (!mst.dfs(mst.findVertex(e.s.elem)).contains(e.d)) {
+				// Destination not found, let's add the edge. 
+				mst.addEdge(new Edge(mst.findVertex(e.s.elem), mst.findVertex(e.d.elem), e.weight));
+			}
+		}
+
+		return (Graph<E>) mst;
 	}
 }

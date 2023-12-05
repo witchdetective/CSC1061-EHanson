@@ -27,10 +27,7 @@ public class GraphTest {
 		System.out.println("Original Graph:");
 		graph.printEdges();
 
-		System.out.println("bfs: " + graph.bfs()); // BFS printout.
-		System.out.println("dfs: " + graph.dfs(graph.getVertex(0))); // DFS printout.
-
-		//System.out.println("Minimum Spanning Tree:");
-		//graph.findMinimumSpanningTree().printEdges();		
+		System.out.println("Minimum Spanning Tree:");
+		graph.findMinimumSpanningTree().printEdges();		
 	}
 }
